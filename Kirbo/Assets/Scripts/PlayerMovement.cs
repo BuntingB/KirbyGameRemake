@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
   [SerializeField] Sprite[] kirbySprite;
   [SerializeField] float[] gravity;
   [SerializeField] string powerUpName;
-  [SerializeField] GameObject attack;
+  [SerializeField] GameObject squareHitbox;
+  Power power;
   //[SerializeField] PowerUp powerUp;
 
   bool jumpInput = false;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     trans = GetComponent<Transform>();
     body = GetComponent<Rigidbody2D>();
     sprite = GetComponent<SpriteRenderer>();
+    power = new NoPower(squareHitbox);
     //kirbySprite = Resources.LoadAll<Sprite>("Assets\\Sprites\\Kirby");
   }
 
@@ -42,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
     }
     if (Input.GetKey(KeyCode.Comma)) {
       Attack();
+    } else {
+      power.NoAttack();
     }
     
   }
@@ -72,14 +76,13 @@ public class PlayerMovement : MonoBehaviour
   }
   private void Attack() {
     if (powerUpName == "Nothing") {
-      Suck();
+      
     }
+    power.Attack();
     // else use powerUp.attack()
 
   }
-  private void Suck() {
-    
-  }
+
   private void OnCollisionEnter2D(Collision2D collision) {
     if (collision.collider.tag == "Ground") {
       for (int i = 0; i < collision.contacts.Length; i++) {
