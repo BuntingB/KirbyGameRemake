@@ -11,7 +11,7 @@ public class NoPower : Power
     this.xScale = 0.23f;
     this.yScale = 0.14f;
   }
-  override public void Attack() {
+  public override void Attack() {
     hitbox.transform.localScale = new Vector3(xScale, yScale, 1);
     hitbox.transform.localPosition = new Vector2(xOffSet, yOffSet);
   }
