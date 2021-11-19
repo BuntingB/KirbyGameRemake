@@ -13,8 +13,10 @@ public class WeedleDeeAI: MonoBehaviour
     SpriteRenderer sprite;
 
     int _health = 10;
+
     bool hitWall;
     bool isGrounded;
+    bool inSucc;
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,10 @@ public class WeedleDeeAI: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (inSucc) {
+            _health -= 10;
+            inSucc = false;
+        }
         if (_health < 1) {
             Die();
         }
@@ -87,6 +93,19 @@ public class WeedleDeeAI: MonoBehaviour
                     hitWall = true;
                 }
             }
+        }
+    }
+
+    //Acts on entry of collider
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "SUCC")
+        {
+            inSucc = true;
+        }
+        else
+        {
+            inSucc = false;
         }
     }
 }
