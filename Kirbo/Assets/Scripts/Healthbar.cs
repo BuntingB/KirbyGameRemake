@@ -9,7 +9,7 @@ public class Healthbar : MonoBehaviour
   [SerializeField] GameObject playerObj;
 
   Player playerProperties;
-  float maxHealth = 28;
+  float maxHealth = 20;
 
   // Start is called before the first frame update
   void Start()

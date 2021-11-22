@@ -6,7 +6,9 @@ public class CappyAI : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float jumpHeight;
+    [SerializeField] float attackRange;
     [SerializeField] Sprite[] aiSprite;
+    [SerializeField] Transform playerTrans;
 
     Transform trans;
     Rigidbody2D body;
@@ -42,7 +44,10 @@ public class CappyAI : MonoBehaviour
     // Update is called regularly
     void FixedUpdate()
     {
-        Walk();
+        if (Mathf.Abs(playerTrans.position.x - trans.position.x) < attackRange)
+        {
+            Walk();
+        }
     }
 
     //Destroys entity
@@ -79,15 +84,15 @@ public class CappyAI : MonoBehaviour
     //Acts on collision
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Ground" || collision.collider.tag == "Wall")
+        if (/*collision.collider.tag == "Ground" || */collision.collider.tag == "Wall")
         {
-            for (int i = 0; i < collision.contacts.Length; i++)
+            /*for (int i = 0; i < collision.contacts.Length; i++)
             {
                 if (collision.contacts[i].normal.x == -1 || collision.contacts[i].normal.x == 1) //Checks if gameObject is colliding with left or right side of object
-                {
+                {*/
                     hitWall = true;
-                }
-            }
+                /*}
+            }*/
         }
     }
 

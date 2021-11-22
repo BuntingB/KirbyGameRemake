@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         {
             Die();
         }
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.F)) 
         {
             TakeDamage(2);
         }

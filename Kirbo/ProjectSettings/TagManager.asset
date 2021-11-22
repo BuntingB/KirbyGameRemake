@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - SUCC
   - Enemy
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
@@ -47,6 +48,12 @@ TagManager:
     locked: 0
   - name: Terrain
     uniqueID: 933102175
+    locked: 0
+  - name: Waffle
+    uniqueID: 2952891979
+    locked: 0
+  - name: Door
+    uniqueID: 3955364627
     locked: 0
   - name: Enemies
     uniqueID: 2755339981
