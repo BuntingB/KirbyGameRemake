@@ -8,7 +8,12 @@ public class WaddleDeeAI: MonoBehaviour
     [SerializeField] float jumpHeight;
     [SerializeField] float attackRange;
     [SerializeField] Sprite[] aiSprite;
-    [SerializeField] Transform playerTrans;
+  
+  Transform playerTrans;
+  PlayerMovement playerMove;
+  GameObject player;
+  int power = 0;
+
 
     Transform trans;
     Rigidbody2D body;
@@ -23,6 +28,9 @@ public class WaddleDeeAI: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    player = GameObject.Find("Player");
+    playerTrans = player.GetComponent<Transform>();
+    playerMove = player.GetComponentInChildren<PlayerMovement>();
         trans = GetComponent<Transform>();
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -36,7 +44,8 @@ public class WaddleDeeAI: MonoBehaviour
             inSucc = false;
         }
         if (_health < 1) {
-            Die();
+          playerMove.GiveSucc(power);//give play movement informatiuons before dying
+          Die();
         }
     }
 
@@ -50,6 +59,7 @@ public class WaddleDeeAI: MonoBehaviour
 
     //Destroys entity
     void Die() {
+        
         Destroy(gameObject);
     }
 
@@ -106,8 +116,9 @@ public class WaddleDeeAI: MonoBehaviour
         if (collision.gameObject.tag == "SUCC")
         {
             inSucc = true;
-        }
-        else
+        } else if (collision.gameObject.tag == "Player Attack") {//dies to player attacks without succ
+      Die();
+    } else
         {
             inSucc = false;
         }

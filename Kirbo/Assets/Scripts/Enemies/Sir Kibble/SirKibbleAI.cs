@@ -6,10 +6,14 @@ public class SirKibbleAI : MonoBehaviour
 {
     [SerializeField] float jumpHeight;
     [SerializeField] Sprite[] aiSprite;
-    [SerializeField] Transform playerTrans;
     [SerializeField] float attackRange;
 
-    Transform trans;
+  Transform playerTrans;
+  PlayerMovement playerMove;
+  GameObject player;
+  int power = 1;
+
+  Transform trans;
     Rigidbody2D body;
     SpriteRenderer sprite;
 
@@ -22,7 +26,10 @@ public class SirKibbleAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        trans = GetComponent<Transform>();
+    player = GameObject.Find("Player");
+    playerTrans = player.GetComponent<Transform>();
+    playerMove = player.GetComponentInChildren<PlayerMovement>();
+    trans = GetComponent<Transform>();
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
     }
@@ -32,11 +39,13 @@ public class SirKibbleAI : MonoBehaviour
     {
         if (inSucc)
         {
-            _health -= 5;
+            _health -= 10;
             inSucc = false;
         }
         if (_health < 1)
         {
+          playerMove.GiveSucc(power);//give play movement informatiuons before dying
+
             Die();
         }
     }
@@ -102,8 +111,9 @@ public class SirKibbleAI : MonoBehaviour
         if (collision.gameObject.tag == "SUCC")
         {
             inSucc = true;
-        }
-        else
+        } else if (collision.gameObject.tag == "Player Attack") {//dies to player attacks without succ
+      Die();
+    } else
         {
             inSucc = false;
         }

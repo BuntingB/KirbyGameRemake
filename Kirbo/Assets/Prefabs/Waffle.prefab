@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4601112634129129941}
   - component: {fileID: 7443798811323856106}
   - component: {fileID: 1487510145360454480}
+  - component: {fileID: 3752185770299770985}
   m_Layer: 0
   m_Name: Waffle
   m_TagString: Ground
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1342075317
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8c928832e7aa6a24c95db902ed55ec79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -129,3 +130,15 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &3752185770299770985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416430985981732778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53319ddba89861f4ab9baf2a09ce99f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

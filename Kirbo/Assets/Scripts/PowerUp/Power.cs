@@ -7,6 +7,7 @@ public abstract class Power : MonoBehaviour
   public float xScale, yScale;
   public float xOffSet, yOffSet;
   public GameObject hitbox;
+  public Animator anim;
   //abstract Power();
   public abstract void Attack();
   public abstract void NoAttack();
