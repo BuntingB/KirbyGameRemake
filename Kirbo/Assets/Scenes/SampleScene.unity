@@ -9348,7 +9348,8 @@ MonoBehaviour:
   speed: 2
   jumpHeight: 2
   attackRange: 0
-  aiSprite: []
+  playerTrans: {fileID: 0}
+  playerMove: {fileID: 0}
 --- !u!114 &1230915523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9362,8 +9363,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 7
-  aiSprite: []
   attackRange: 5
+  boomerangPrefab: {fileID: 0}
+  boomerangSpawn: {fileID: 0}
+  boomerangSpeed: 0
+  playerTrans: {fileID: 0}
+  playerMove: {fileID: 0}
 --- !u!1 &1241438442
 GameObject:
   m_ObjectHideFlags: 0
@@ -12844,10 +12849,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4252799357002002544, guid: 8086e846129af9d46b3066164b6566e2, type: 3}
-      propertyPath: playerTrans
-      value: 
-      objectReference: {fileID: 935252865}
     - target: {fileID: 4532577998254949101, guid: 8086e846129af9d46b3066164b6566e2, type: 3}
       propertyPath: m_Name
       value: SirKibble

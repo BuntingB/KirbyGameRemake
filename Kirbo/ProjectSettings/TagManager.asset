@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Door
   - Player Attack
+  - EnemyBoomerang
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Boomrang
   - 
   - 
   - 

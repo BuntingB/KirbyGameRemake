@@ -8,5 +8,8 @@ public class PlayerStar : MonoBehaviour
     if (collision.tag == "Enemy") {
       Destroy(gameObject);
     }
+    if (collision.tag == "Ground") {
+      Destroy(gameObject);
+    }
   }
 }

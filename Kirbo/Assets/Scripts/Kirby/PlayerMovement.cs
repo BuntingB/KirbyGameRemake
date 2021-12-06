@@ -9,9 +9,7 @@ public class PlayerMovement : MonoBehaviour {
   [SerializeField] float speed;
   [SerializeField] float jumpForce;
   [SerializeField] float airJumpForce;
-  [SerializeField] Sprite[] kirbySprite;
   [SerializeField] float[] gravity;
-  [SerializeField] string powerUpName;
   [SerializeField] GameObject squareHitbox;
   [SerializeField] Power[] powers;
   [SerializeField] GameObject starPrefab;
@@ -19,6 +17,7 @@ public class PlayerMovement : MonoBehaviour {
   public int inMouth = -1;
   public Animator anim;
   int right = 1;
+  float timeDelay = 0f;
   [SerializeField] Image cutterIcon;
 
 
@@ -41,9 +40,6 @@ public class PlayerMovement : MonoBehaviour {
     sprite = GetComponent<SpriteRenderer>();
     anim = GetComponent<Animator>();
 
-    //power = GetComponentInParent<NoPower>();
-   //NoPower(squareHitbox);
-    //kirbySprite = Resources.LoadAll<Sprite>("Assets\\Sprites\\Kirby");
   }
 
   // Update is called once per frame
@@ -56,7 +52,7 @@ public class PlayerMovement : MonoBehaviour {
       anim.SetBool("Full", false);
 
     }
-    if (Input.GetKey(KeyCode.Comma) && inMouth < 0) {
+    if (Input.GetKey(KeyCode.Comma) && inMouth < 0 && timeDelay < Time.realtimeSinceStartup) {
       if (isPuffed) {//depuffs
         //sprite.sprite = kirbySprite[0];
         Puff();
@@ -103,7 +99,6 @@ public class PlayerMovement : MonoBehaviour {
   }
   void Jump() {
     if (!isGrounded && inMouth < 0) {
-      //sprite.sprite = kirbySprite[1];
       body.gravityScale = gravity[1];
       body.velocity = new Vector2(0, airJumpForce);
       isPuffed = true;
@@ -123,7 +118,6 @@ public class PlayerMovement : MonoBehaviour {
           if (isPuffed) {
             Puff();
           }
-          sprite.sprite = kirbySprite[0];
           body.gravityScale = gravity[0];
         }
       }
@@ -147,6 +141,7 @@ public class PlayerMovement : MonoBehaviour {
     isPuffed = false;
   }
   void Spit() {
+    timeDelay = Time.realtimeSinceStartup + 0.5f;
     var star = Instantiate(starPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
     star.GetComponent<Rigidbody2D>().velocity = new Vector3(right, 0, 0) * 20;
     anim.SetBool("Full", false);
